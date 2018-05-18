@@ -9,12 +9,14 @@
 import UIKit
 
 @objc protocol LRTableViewDatasource : class {
+    
     func numbersOfLeftRowsInLRTableView(lrTableView : LeftRightTableView) -> Int
     func titleForLeftRowInLRTableView(lrTableView : LeftRightTableView, leftRow : Int) -> String
     func subdataForRightRowInLRTableView(lrTableView : LeftRightTableView, leftRow : Int) -> [String]?
 }
 
 @objc protocol LRTableViewDelegate : class {
+    
     @objc optional func didSelectedLeftRowInLRTableView(lrtTableView : LeftRightTableView, leftRow : Int)
     @objc optional func didSelectedRightRowInLRTableView(lrtTableView : LeftRightTableView, leftRow : Int, rightRow : Int)
     @objc optional func didSelectedConfirmButton(lrtTableView : LeftRightTableView, leftRow : Int, rightRow : Int)
