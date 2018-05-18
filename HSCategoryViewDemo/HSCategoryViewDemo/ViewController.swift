@@ -89,6 +89,9 @@ extension ViewController: LRTableViewDelegate {
     func didSelectedConfirmButton(lrtTableView: LeftRightTableView, leftRow: Int, rightRow: Int) {
         print("leftRow:---\(leftRow)", "rightRow:---\(rightRow)")
     }
+    func didSelectedResetButton(lrtTableView: LeftRightTableView, leftRow: Int, rightRow: Int) {
+        print("leftRow:---\(leftRow)", "rightRow:---\(rightRow)")
+    }
 }
 
 

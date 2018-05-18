@@ -8,21 +8,25 @@
 
 import UIKit
 
-@objc protocol LRTableViewDatasource : class {
+@objc public protocol LRTableViewDatasource : class {
+    
     func numbersOfLeftRowsInLRTableView(lrTableView : LeftRightTableView) -> Int
     func titleForLeftRowInLRTableView(lrTableView : LeftRightTableView, leftRow : Int) -> String
     func subdataForRightRowInLRTableView(lrTableView : LeftRightTableView, leftRow : Int) -> [String]?
 }
 
-@objc protocol LRTableViewDelegate : class {
+@objc public protocol LRTableViewDelegate : class {
+    
     @objc optional func didSelectedLeftRowInLRTableView(lrtTableView : LeftRightTableView, leftRow : Int)
     @objc optional func didSelectedRightRowInLRTableView(lrtTableView : LeftRightTableView, leftRow : Int, rightRow : Int)
     @objc optional func didSelectedConfirmButton(lrtTableView : LeftRightTableView, leftRow : Int, rightRow : Int)
+    @objc optional func didSelectedResetButton(lrtTableView : LeftRightTableView, leftRow : Int, rightRow : Int)
+    
 }
 
 
 
-class LeftRightTableView: UIView {
+public class LeftRightTableView: UIView {
     
     // MARK:- 创建cell的标识
     let LeftCellID = "LeftCellID"
@@ -30,14 +34,14 @@ class LeftRightTableView: UIView {
     
     
     // MARK:- 定义属性
-    weak var datasource : LRTableViewDatasource?
-    weak var delegate : LRTableViewDelegate?
+    public weak var datasource : LRTableViewDatasource?
+    public weak var delegate : LRTableViewDelegate?
     var subData : [String]? // 存放右边列表数据
     var leftCurrentIndex : Int = 0 // 左边cell被点击角标
     var rightCurrentIndex : Int = 0 // 右边cell被点击角标
     var iconArray = [AnyObject]() // 存放右边cell的图标
     
-
+    
     
     // MARK:- 左右tableView控件属性
     @IBOutlet weak var leftTableView: UITableView!
@@ -47,13 +51,17 @@ class LeftRightTableView: UIView {
     @IBOutlet weak var resetBtn: UIButton!
     @IBOutlet weak var cinfirmBtn: UIButton!
     
-
+    
     // MARK:- 重置按钮点击
     @IBAction func resetBtnClick(_ sender: Any) {
         // 角标置零
         leftCurrentIndex = 0
         rightCurrentIndex = 0
-//        print("leftRow:---\(leftCurrentIndex)", "rightRow:---\(rightCurrentIndex)")
+        //        print("leftRow:---\(leftCurrentIndex)", "rightRow:---\(rightCurrentIndex)")
+        
+        delegate?.didSelectedResetButton?(lrtTableView: self, leftRow: leftCurrentIndex, rightRow: rightCurrentIndex)
+        let indexPath = NSIndexPath(row: 0, section: 0)
+        leftTableView.selectRow(at: indexPath as IndexPath, animated: false, scrollPosition: .none)
         
         // 将图标设为未点击状态,刷新列表
         let num: Int = iconArray.count
@@ -72,7 +80,7 @@ class LeftRightTableView: UIView {
         
     }
     
-    override func awakeFromNib() {
+    override open func awakeFromNib() {
         
         // 设置底部按钮
         resetBtn.layer.cornerRadius = 4
@@ -86,23 +94,27 @@ class LeftRightTableView: UIView {
         // 去除多余的分割线
         leftTableView.tableFooterView = UIView()
         rightTableView.tableFooterView = UIView()
+        
+        leftTableView.backgroundColor = UIColor(hex: 0xf2f2f2)
+        rightTableView.backgroundColor = UIColor(hex: 0xf2f2f2)
     }
-
+    
 }
 
-    // MARK:- 加载view的方法
+// MARK:- 加载view的方法
 extension LeftRightTableView {
-
-    class func lrTableView() -> LeftRightTableView {
-        return Bundle.main.loadNibNamed("LeftRightTableView", owner: nil, options: nil)!.first as! LeftRightTableView
+    
+    public class func lrTableView() -> LeftRightTableView {
+        let bundle = Bundle(for:object_getClass(self)!)
+        return bundle.loadNibNamed("LeftRightTableView", owner: nil, options: nil)!.first as! LeftRightTableView
     }
-  
+    
 }
 
 // MARK:- 数据源方法
 extension LeftRightTableView: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if tableView == leftTableView {
             return datasource?.numbersOfLeftRowsInLRTableView(lrTableView: self) ?? 0
@@ -112,7 +124,7 @@ extension LeftRightTableView: UITableViewDataSource {
     }
     
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell: UITableViewCell?
         
@@ -120,23 +132,29 @@ extension LeftRightTableView: UITableViewDataSource {
             // 创建Cell
             cell = tableView.dequeueReusableCell(withIdentifier: LeftCellID)
             
-
+            
             // 判断cell是否有值
             if cell == nil {
                 cell = UITableViewCell(style: .default, reuseIdentifier: LeftCellID)
             }
-
+            
             // 给cell设置数据
             cell?.textLabel?.text = datasource?.titleForLeftRowInLRTableView(lrTableView: self, leftRow: indexPath.row)
             cell?.textLabel?.textColor = UIColor(hex: 333333)
             
-            cell?.backgroundColor = UIColor(hex: 0xFAFAFA)
+            cell?.backgroundColor = UIColor(hex: 0xf2f2f2)
+            
             cell?.selectedBackgroundView = UIView(frame: (cell?.frame)!)
+//            let topLineView = UIView(frame: CGRect(x: 0, y: 0, width: (cell?.frame.width)!, height: 1))
+//            topLineView.backgroundColor = UIColor(hex: 0xdddddd)
+//            cell?.selectedBackgroundView?.addSubview(topLineView)
+//            let bottomLineView = UIView(frame: CGRect(x: 0, y: ((cell?.selectedBackgroundView?.frame.height)! + 5), width: (cell?.frame.width)!, height: 1))
+//            bottomLineView.backgroundColor = UIColor(hex: 0xdddddd)
+//            cell?.selectedBackgroundView?.addSubview(bottomLineView)
             cell?.selectedBackgroundView?.backgroundColor = UIColor(hexStr: "FFFFFF")
             
-            
         } else {
-
+            
             // 创建Cell
             cell = tableView.dequeueReusableCell(withIdentifier: RightCellID)
             
@@ -155,9 +173,9 @@ extension LeftRightTableView: UITableViewDataSource {
             cell?.textLabel?.textColor = UIColor(hex: 333333)
             cell?.selectionStyle = UITableViewCellSelectionStyle.none
             
-           
+            
         }
-
+        
         return cell!
     }
 }
@@ -165,8 +183,8 @@ extension LeftRightTableView: UITableViewDataSource {
 // MARK:- 代理方法
 extension LeftRightTableView : UITableViewDelegate {
     
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if tableView == leftTableView {
             
@@ -176,7 +194,9 @@ extension LeftRightTableView : UITableViewDelegate {
             iconArray.removeAll()
             let num: Int = (subData?.count)!
             for _ in 0..<num {
+                
                 let iconImageView = UIImageView(image: UIImage(named: "check_nor"))
+                
                 iconArray.append(iconImageView)
             }
             
@@ -206,7 +226,7 @@ extension LeftRightTableView : UITableViewDelegate {
 
 // MARK:- 点击cell,处理图标变化
 extension LeftRightTableView {
-
+    
     func selectedRow(indexPath: NSIndexPath) {
         
         let count: Int = iconArray.count
@@ -220,10 +240,11 @@ extension LeftRightTableView {
                 icon.sizeToFit()
             }
         }
-  
+        
     }
- 
+    
 }
+
 
 
 

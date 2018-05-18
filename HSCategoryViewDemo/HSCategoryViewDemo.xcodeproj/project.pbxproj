@@ -11,11 +11,16 @@
 		BB21979120AD662A004ADE3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB21978F20AD662A004ADE3A /* Main.storyboard */; };
 		BB21979320AD662B004ADE3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB21979220AD662B004ADE3A /* Assets.xcassets */; };
 		BB21979620AD662B004ADE3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB21979420AD662B004ADE3A /* LaunchScreen.storyboard */; };
-		BB2197A220AD6637004ADE3A /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB21979E20AD6637004ADE3A /* images.xcassets */; };
 		BB2197A320AD6637004ADE3A /* LeftRightTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB21979F20AD6637004ADE3A /* LeftRightTableView.swift */; };
 		BB2197A420AD6637004ADE3A /* LeftRightTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB2197A020AD6637004ADE3A /* LeftRightTableView.xib */; };
 		BB2197A520AD6637004ADE3A /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2197A120AD6637004ADE3A /* UIColor+extension.swift */; };
 		BB2197A720AD6651004ADE3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2197A620AD6651004ADE3A /* ViewController.swift */; };
+		BBF2F95B20AEB653008FBC27 /* check_click.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF2F95520AEB653008FBC27 /* check_click.png */; };
+		BBF2F95C20AEB653008FBC27 /* check_click@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF2F95620AEB653008FBC27 /* check_click@2x.png */; };
+		BBF2F95D20AEB654008FBC27 /* check_click@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF2F95720AEB653008FBC27 /* check_click@3x.png */; };
+		BBF2F95E20AEB654008FBC27 /* check_nor.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF2F95820AEB653008FBC27 /* check_nor.png */; };
+		BBF2F95F20AEB654008FBC27 /* check_nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF2F95920AEB653008FBC27 /* check_nor@2x.png */; };
+		BBF2F96020AEB654008FBC27 /* check_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF2F95A20AEB653008FBC27 /* check_nor@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,11 +30,16 @@
 		BB21979220AD662B004ADE3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB21979520AD662B004ADE3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB21979720AD662B004ADE3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BB21979E20AD6637004ADE3A /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
 		BB21979F20AD6637004ADE3A /* LeftRightTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftRightTableView.swift; sourceTree = "<group>"; };
 		BB2197A020AD6637004ADE3A /* LeftRightTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftRightTableView.xib; sourceTree = "<group>"; };
 		BB2197A120AD6637004ADE3A /* UIColor+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
 		BB2197A620AD6651004ADE3A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BBF2F95520AEB653008FBC27 /* check_click.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_click.png; sourceTree = "<group>"; };
+		BBF2F95620AEB653008FBC27 /* check_click@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check_click@2x.png"; sourceTree = "<group>"; };
+		BBF2F95720AEB653008FBC27 /* check_click@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check_click@3x.png"; sourceTree = "<group>"; };
+		BBF2F95820AEB653008FBC27 /* check_nor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_nor.png; sourceTree = "<group>"; };
+		BBF2F95920AEB653008FBC27 /* check_nor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check_nor@2x.png"; sourceTree = "<group>"; };
+		BBF2F95A20AEB653008FBC27 /* check_nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check_nor@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,12 +86,25 @@
 		BB21979D20AD6637004ADE3A /* CategoryView */ = {
 			isa = PBXGroup;
 			children = (
-				BB21979E20AD6637004ADE3A /* images.xcassets */,
+				BBF2F95420AEB653008FBC27 /* icons */,
 				BB21979F20AD6637004ADE3A /* LeftRightTableView.swift */,
 				BB2197A020AD6637004ADE3A /* LeftRightTableView.xib */,
 				BB2197A120AD6637004ADE3A /* UIColor+extension.swift */,
 			);
 			path = CategoryView;
+			sourceTree = "<group>";
+		};
+		BBF2F95420AEB653008FBC27 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				BBF2F95520AEB653008FBC27 /* check_click.png */,
+				BBF2F95620AEB653008FBC27 /* check_click@2x.png */,
+				BBF2F95720AEB653008FBC27 /* check_click@3x.png */,
+				BBF2F95820AEB653008FBC27 /* check_nor.png */,
+				BBF2F95920AEB653008FBC27 /* check_nor@2x.png */,
+				BBF2F95A20AEB653008FBC27 /* check_nor@3x.png */,
+			);
+			path = icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,10 +166,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB21979620AD662B004ADE3A /* LaunchScreen.storyboard in Resources */,
-				BB2197A220AD6637004ADE3A /* images.xcassets in Resources */,
+				BBF2F96020AEB654008FBC27 /* check_nor@3x.png in Resources */,
 				BB21979320AD662B004ADE3A /* Assets.xcassets in Resources */,
+				BBF2F95F20AEB654008FBC27 /* check_nor@2x.png in Resources */,
+				BBF2F95D20AEB654008FBC27 /* check_click@3x.png in Resources */,
 				BB21979120AD662A004ADE3A /* Main.storyboard in Resources */,
 				BB2197A420AD6637004ADE3A /* LeftRightTableView.xib in Resources */,
+				BBF2F95E20AEB654008FBC27 /* check_nor.png in Resources */,
+				BBF2F95B20AEB653008FBC27 /* check_click.png in Resources */,
+				BBF2F95C20AEB653008FBC27 /* check_click@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +333,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H23775VQNZ;
 				INFOPLIST_FILE = HSCategoryViewDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -322,6 +351,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H23775VQNZ;
 				INFOPLIST_FILE = HSCategoryViewDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
